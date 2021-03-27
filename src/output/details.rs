@@ -343,7 +343,7 @@ impl<'a> Render<'a> {
         Row {
             tree:     TreeParams::new(TreeDepth::root(), false),
             cells:    Some(header),
-            name:     TextCell::paint_str(self.theme.ui.header, "Name"),
+            name:     TextCell::paint(self.theme.ui.header, "Name"),
         }
     }
 

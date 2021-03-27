@@ -52,7 +52,7 @@ pub mod test {
         users.add_user(User::new(1000, "enoch", 100));
 
         let user = f::User(1000);
-        let expected = TextCell::paint_str(Red.bold(), "enoch");
+        let expected = TextCell::paint(Red.bold(), "enoch");
         assert_eq!(expected, user.render(&TestColours, &users))
     }
 
@@ -61,7 +61,7 @@ pub mod test {
         let users = MockUsers::with_current_uid(1000);
 
         let user = f::User(1000);
-        let expected = TextCell::paint_str(Red.bold(), "1000");
+        let expected = TextCell::paint(Red.bold(), "1000");
         assert_eq!(expected, user.render(&TestColours, &users));
     }
 
@@ -71,21 +71,21 @@ pub mod test {
         users.add_user(User::new(1000, "enoch", 100));
 
         let user = f::User(1000);
-        let expected = TextCell::paint_str(Blue.underline(), "enoch");
+        let expected = TextCell::paint(Blue.underline(), "enoch");
         assert_eq!(expected, user.render(&TestColours, &users));
     }
 
     #[test]
     fn different_unnamed() {
         let user = f::User(1000);
-        let expected = TextCell::paint_str(Blue.underline(), "1000");
+        let expected = TextCell::paint(Blue.underline(), "1000");
         assert_eq!(expected, user.render(&TestColours, &MockUsers::with_current_uid(0)));
     }
 
     #[test]
     fn overflow() {
         let user = f::User(2_147_483_648);
-        let expected = TextCell::paint_str(Blue.underline(), "2147483648");
+        let expected = TextCell::paint(Blue.underline(), "2147483648");
         assert_eq!(expected, user.render(&TestColours, &MockUsers::with_current_uid(0)));
     }
 }

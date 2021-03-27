@@ -22,7 +22,7 @@ pub mod test {
     #[test]
     fn blocklessness() {
         let io = f::Inode(1414213);
-        let expected = TextCell::paint_str(Cyan.underline(), "1414213");
+        let expected = TextCell::paint(Cyan.underline(), "1414213");
         assert_eq!(expected, io.render(Cyan.underline()).into());
     }
 }

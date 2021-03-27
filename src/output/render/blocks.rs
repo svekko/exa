@@ -50,7 +50,7 @@ pub mod test {
     #[test]
     fn blockfulity() {
         let blox = f::Blocks::Some(3005);
-        let expected = TextCell::paint_str(Red.blink(), "3005");
+        let expected = TextCell::paint(Red.blink(), "3005");
 
         assert_eq!(expected, blox.render(&TestColours).into());
     }

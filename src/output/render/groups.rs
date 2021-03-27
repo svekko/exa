@@ -26,7 +26,7 @@ impl f::Group {
             }
         }
 
-        TextCell::paint(style, group.name().to_string_lossy().into())
+        TextCell::paint(style, group.name().to_string_lossy())
     }
 }
 
@@ -65,7 +65,7 @@ pub mod test {
         users.add_group(Group::new(100, "folk"));
 
         let group = f::Group(100);
-        let expected = TextCell::paint_str(Fixed(81).normal(), "folk");
+        let expected = TextCell::paint(Fixed(81).normal(), "folk");
         assert_eq!(expected, group.render(&TestColours, &users))
     }
 
@@ -74,7 +74,7 @@ pub mod test {
         let users = MockUsers::with_current_uid(1000);
 
         let group = f::Group(100);
-        let expected = TextCell::paint_str(Fixed(81).normal(), "100");
+        let expected = TextCell::paint(Fixed(81).normal(), "100");
         assert_eq!(expected, group.render(&TestColours, &users));
     }
 
@@ -85,7 +85,7 @@ pub mod test {
         users.add_group(Group::new(100, "folk"));
 
         let group = f::Group(100);
-        let expected = TextCell::paint_str(Fixed(80).normal(), "folk");
+        let expected = TextCell::paint(Fixed(80).normal(), "folk");
         assert_eq!(expected, group.render(&TestColours, &users))
     }
 
@@ -98,14 +98,14 @@ pub mod test {
         users.add_group(test_group);
 
         let group = f::Group(100);
-        let expected = TextCell::paint_str(Fixed(80).normal(), "folk");
+        let expected = TextCell::paint(Fixed(80).normal(), "folk");
         assert_eq!(expected, group.render(&TestColours, &users))
     }
 
     #[test]
     fn overflow() {
         let group = f::Group(2_147_483_648);
-        let expected = TextCell::paint_str(Fixed(81).normal(), "2147483648");
+        let expected = TextCell::paint(Fixed(81).normal(), "2147483648");
         assert_eq!(expected, group.render(&TestColours, &MockUsers::with_current_uid(0)));
     }
 }

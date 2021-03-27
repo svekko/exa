@@ -35,27 +35,15 @@ impl Deref for TextCell {
     }
 }
 
-impl TextCell {
+impl <'a>TextCell {
 
     /// Creates a new text cell that holds the given text in the given style,
     /// computing the Unicode width of the text.
-    pub fn paint(style: Style, text: String) -> Self {
-        let width = DisplayWidth::from(&*text);
+    pub fn paint<S: 'a + AsRef<str> + ToString>(style: Style, text: S) -> Self {
+        let width = DisplayWidth::from(text.as_ref());
 
         Self {
-            contents: vec![ style.paint(text) ].into(),
-            width,
-        }
-    }
-
-    /// Creates a new text cell that holds the given text in the given style,
-    /// computing the Unicode width of the text. (This could be merged with
-    /// `paint`, but.)
-    pub fn paint_str(style: Style, text: &'static str) -> Self {
-        let width = DisplayWidth::from(text);
-
-        Self {
-            contents: vec![ style.paint(text) ].into(),
+            contents: vec![ style.paint(text.to_string()) ].into(),
             width,
         }
     }

@@ -39,7 +39,7 @@ pub mod test {
 
         let octal = f::OctalPermissions{ permissions: bits };
 
-        let expected = TextCell::paint_str(Purple.bold(), "0755");
+        let expected = TextCell::paint(Purple.bold(), "0755");
         assert_eq!(expected, octal.render(Purple.bold()).into());
     }
 
@@ -53,7 +53,7 @@ pub mod test {
 
         let octal = f::OctalPermissions{ permissions: bits };
 
-        let expected = TextCell::paint_str(Purple.bold(), "0644");
+        let expected = TextCell::paint(Purple.bold(), "0644");
         assert_eq!(expected, octal.render(Purple.bold()).into());
     }
 
@@ -67,7 +67,7 @@ pub mod test {
 
         let octal = f::OctalPermissions{ permissions: bits };
 
-        let expected = TextCell::paint_str(Purple.bold(), "0600");
+        let expected = TextCell::paint(Purple.bold(), "0600");
         assert_eq!(expected, octal.render(Purple.bold()).into());
     }
 
@@ -81,7 +81,7 @@ pub mod test {
 
         let octal = f::OctalPermissions{ permissions: bits };
 
-        let expected = TextCell::paint_str(Purple.bold(), "4777");
+        let expected = TextCell::paint(Purple.bold(), "4777");
         assert_eq!(expected, octal.render(Purple.bold()).into());
 
     }
@@ -96,7 +96,7 @@ pub mod test {
 
         let octal = f::OctalPermissions{ permissions: bits };
 
-        let expected = TextCell::paint_str(Purple.bold(), "2777");
+        let expected = TextCell::paint(Purple.bold(), "2777");
         assert_eq!(expected, octal.render(Purple.bold()).into());
     }
 
@@ -110,7 +110,7 @@ pub mod test {
 
         let octal = f::OctalPermissions{ permissions: bits };
 
-        let expected = TextCell::paint_str(Purple.bold(), "1777");
+        let expected = TextCell::paint(Purple.bold(), "1777");
         assert_eq!(expected, octal.render(Purple.bold()).into());
     }
 }

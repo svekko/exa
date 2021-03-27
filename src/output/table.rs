@@ -342,7 +342,7 @@ impl<'a, 'f> Table<'a> {
 
     pub fn header_row(&self) -> Row {
         let cells = self.columns.iter()
-                        .map(|c| TextCell::paint_str(self.theme.ui.header, c.header()))
+                        .map(|c| TextCell::paint(self.theme.ui.header, c.header()))
                         .collect();
 
         Row { cells }
